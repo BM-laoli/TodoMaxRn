@@ -22,7 +22,7 @@ const codeMessage : {[key:string] :string } = {
 
 // 1. 配置项
 const Http = axios.create({
-    baseURL: 'http://192.168.7.152:3000',
+    baseURL: 'http://192.168.124.16:3000',
     timeout: 3000,
 });
 

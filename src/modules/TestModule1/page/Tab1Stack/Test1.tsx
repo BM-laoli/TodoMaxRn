@@ -5,7 +5,7 @@ import {ListItem, Avatar, Divider, Icon} from 'react-native-elements';
 import {useLocalObservable, useObserver} from 'mobx-react';
 import {todoStore} from '../../Store';
 import {SpeedDial} from 'react-native-elements';
-import AppA from './Test3';
+import Modals from './Test3';
 const list = [
   {
     title: 'Appointments',
@@ -32,59 +32,58 @@ const TabTacks1: React.FC<any> = props => {
 
   return useObserver(() => {
     return (
-      // <View>
-      //   <ScrollView>
-      //     <View style={{height: 600}}>
-      //       <View
-      //         style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      //         <View>
-      //           <Text>TabTacks1!</Text>
-      //           <Button
-      //             title="去Test1-2页面"
-      //             onPress={() => {
-      //               props?.navigation.navigate('Tab1S2');
-      //             }}
-      //           />
+      <View>
+        <ScrollView>
+          <View style={{height: 600}}>
+            <View
+              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+              <View>
+                <Text>TabTacks1!</Text>
+                <Button
+                  title="去Test1-2页面"
+                  onPress={() => {
+                    props?.navigation.navigate('Tab1S2');
+                  }}
+                />
 
-      //           <Button
-      //             title="登出"
-      //             onPress={() => {
-      //               logout();
-      //             }}
-      //           />
-      //         </View>
-      //       </View>
-      //       <Divider />
-      //       <View>
-      //         {list.map((item, i) => (
-      //           <ListItem key={i} bottomDivider>
-      //             <ListItem.Content>
-      //               <ListItem.Title>{item.title}</ListItem.Title>
-      //             </ListItem.Content>
-      //           </ListItem>
-      //         ))}
-      //       </View>
-      //     </View>
-      //   </ScrollView>
-      //   <SpeedDial
-      //     isOpen={open}
-      //     icon={{name: 'edit', color: '#fff'}}
-      //     openIcon={{name: 'close', color: '#fff'}}
-      //     onOpen={() => setOpen(!open)}
-      //     onClose={() => setOpen(!open)}>
-      //     <SpeedDial.Action
-      //       icon={{name: 'add', color: '#fff'}}
-      //       title="Add"
-      //       onPress={() => console.log('Add Something')}
-      //     />
-      //     <SpeedDial.Action
-      //       icon={{name: 'delete', color: '#fff'}}
-      //       title="Delete"
-      //       onPress={() => console.log('Delete Something')}
-      //     />
-      //   </SpeedDial>
-      // </View>
-      <AppA />
+                <Button
+                  title="登出"
+                  onPress={() => {
+                    logout();
+                  }}
+                />
+              </View>
+            </View>
+            <Divider />
+            <View>
+              {list.map((item, i) => (
+                <ListItem key={i} bottomDivider>
+                  <ListItem.Content>
+                    <ListItem.Title>{item.title}</ListItem.Title>
+                  </ListItem.Content>
+                </ListItem>
+              ))}
+            </View>
+          </View>
+        </ScrollView>
+        <SpeedDial
+          isOpen={open}
+          icon={{name: 'edit', color: '#fff'}}
+          openIcon={{name: 'close', color: '#fff'}}
+          onOpen={() => setOpen(!open)}
+          onClose={() => setOpen(!open)}>
+          <SpeedDial.Action
+            icon={{name: 'add', color: '#fff'}}
+            title="Add"
+            onPress={() => console.log('Add Something')}
+          />
+          <SpeedDial.Action
+            icon={{name: 'delete', color: '#fff'}}
+            title="Delete"
+            onPress={() => console.log('Delete Something')}
+          />
+        </SpeedDial>
+      </View>
     );
   });
 };

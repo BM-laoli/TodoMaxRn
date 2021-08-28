@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Input, Button} from 'react-native-elements';
+import {Input, Button, Image} from 'react-native-elements';
 import {Formik} from 'formik';
 import {Col, Row, Grid} from 'react-native-easy-grid';
 import {useNavigation, CommonActions, useRoute} from '@react-navigation/native';
 import {login} from '../../../service/login/login';
 import {storeData} from '../../../storage';
 import {resetApp} from '../../../common/debug';
+const image4 = require('../../../assets/images/Meeting.png');
 
 const Test2: React.FC<any> = props => {
   const navigation = useNavigation();
@@ -23,7 +24,7 @@ const Test2: React.FC<any> = props => {
       // 把token存起来
       storeData(res);
       //方法一直接替换掉路Stack 比较局限
-      navigation.replace('Test1' as never);
+      navigation.replace('DrawerStackNavigator' as never);
       // 方法二 rest和dispath 非常的灵活
       // 这里的例子，去掉了登录和注册页面并把 Drawer放到第一个
       // navigation.dispatch(state => {
@@ -41,7 +42,16 @@ const Test2: React.FC<any> = props => {
     }
   };
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+      }}>
+      <View style={{position: 'absolute', top: 0}}>
+        <Image source={image4} style={{width: 200, height: 200}} />
+      </View>
       <Formik
         initialValues={{name: '', password: ''}}
         onSubmit={values => {
@@ -105,6 +115,7 @@ const Test2: React.FC<any> = props => {
                   onPress={() => {
                     // 这个抛错不要理他能够正常使用
                     resetApp();
+                    navigation.replace('Test1' as never);
                   }}
                   title="设置成第一次使用App"
                 />

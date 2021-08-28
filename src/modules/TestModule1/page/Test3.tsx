@@ -7,13 +7,14 @@ import {
   Platform,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Input, Button, CheckBox} from 'react-native-elements';
+import {Input, Button, CheckBox, Image} from 'react-native-elements';
 import {Formik} from 'formik';
 import {Col, Row, Grid} from 'react-native-easy-grid';
 import {useNavigation} from '@react-navigation/native';
 import DatePicker from 'react-native-datepicker';
 import {registered} from '../../../service/login/login';
 import moment from 'moment';
+const image4 = require('../../../assets/images/Meeting.png');
 
 const Test3: React.FC<any> = props => {
   const navigation = useNavigation();
@@ -32,7 +33,16 @@ const Test3: React.FC<any> = props => {
     }
   };
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+      }}>
+      <View style={{position: 'absolute', top: 0}}>
+        <Image source={image4} style={{width: 200, height: 200}} />
+      </View>
       <Formik
         initialValues={{
           name: '',

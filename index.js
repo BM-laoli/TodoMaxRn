@@ -7,3 +7,4 @@ AppRegistry.registerComponent(appName, () => ModuleTest);
 
 // 目前有待研究和实现
 // AppRegistry.registerComponent('appName2', () => ModuleTest2);
+// yarn start --reset-cache

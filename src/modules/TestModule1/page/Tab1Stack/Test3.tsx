@@ -1,102 +1,39 @@
-import React from 'react';
-import Modal from 'react-native-modalbox';
+import React, {useState} from 'react';
+import {Button, Dimensions, Platform, Text, View} from 'react-native';
+import Modal from 'react-native-modal';
 
-import {
-  Text,
-  Button,
-  StyleSheet,
-  ScrollView,
-  View,
-  Dimensions,
-  TextInput,
-} from 'react-native';
+// 处理一些奇葩的android设备
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight =
+  Platform.OS === 'ios'
+    ? Dimensions.get('window').height
+    : require('react-native-extra-dimensions-android').get(
+        'REAL_WINDOW_HEIGHT',
+      );
 
-var screen = Dimensions.get('window');
+function ModalTester() {
+  const [isModalVisible, setModalVisible] = useState(false);
 
-export default class App extends React.Component<
-  {},
-  {
-    isOpen: boolean;
-    isDisabled: boolean;
-    swipeToClose: boolean;
-    sliderValue: number;
-  }
-> {
-  _ref = React.createRef<Modal>();
-  constructor(props: {} | Readonly<{}>) {
-    super(props);
-    this.state = {
-      isOpen: false,
-      isDisabled: false,
-      swipeToClose: true,
-      sliderValue: 0.3,
-    };
-  }
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
-  onClose() {
-    console.log('Modal just closed');
-  }
+  return (
+    <View style={{flex: 1}}>
+      <Button title="Show modal" onPress={toggleModal} />
 
-  onOpen() {
-    console.log('Modal just opened');
-  }
+      <Modal
+        isVisible={isModalVisible}
+        deviceWidth={deviceWidth}
+        deviceHeight={deviceHeight}>
+        <View style={{flex: 1}}>
+          <Text>Hello!</Text>
 
-  onClosingState() {
-    console.log('the open/close of the swipeToClose just changed');
-  }
-
-  render() {
-    return (
-      <View style={styles.wrapper}>
-        <Button
-          title="opend"
-          onPress={() => {
-            this._ref.current?.open();
-          }}></Button>
-        <Modal
-          style={[styles.modal, styles.modal1]}
-          ref={this._ref}
-          swipeToClose={this.state.swipeToClose}
-          onClosed={this.onClose}
-          onOpened={this.onOpen}
-          onClosingState={this.onClosingState}>
-          <Text style={styles.text}>Basic modal</Text>
-          <Button
-            title={`Disable swipeToClose(${
-              this.state.swipeToClose ? 'true' : 'false'
-            })`}
-            onPress={() =>
-              this.setState({swipeToClose: !this.state.swipeToClose})
-            }
-          />
-        </Modal>
-      </View>
-    );
-  }
+          <Button title="Hide modal" onPress={toggleModal} />
+        </View>
+      </Modal>
+    </View>
+  );
 }
 
-const styles = StyleSheet.create({
-  wrapper: {
-    paddingTop: 50,
-    flex: 1,
-  },
-
-  modal: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  modal1: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  modal2: {
-    height: 230,
-    backgroundColor: '#3B5998',
-  },
-  text: {
-    color: 'black',
-    fontSize: 22,
-  },
-});
+export default ModalTester;
