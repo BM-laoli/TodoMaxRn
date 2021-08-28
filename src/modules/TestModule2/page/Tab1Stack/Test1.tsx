@@ -1,17 +1,18 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 
-const D1Test2: React.FC<any> = props => {
+const TabTacks1: React.FC<any> = props => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>TabTack1-2!</Text>
+      <Text>TabTacks1!</Text>
       <Button
-        title="返回"
+        title="去Test1-2页面"
         onPress={() => {
-          props?.navigation.goBack();
+          props?.navigation.navigate('Tab1S2');
         }}
       />
     </View>
   );
 };
-export default D1Test2;
+
+export default TabTacks1;

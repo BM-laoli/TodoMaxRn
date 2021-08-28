@@ -5,7 +5,7 @@ import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
 
-  //   // 识别手势
+  // 识别手势
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(null);
