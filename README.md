@@ -5,19 +5,23 @@
 
 # Todo
 
-[x] 搭建基础 脚手架
-[x] 配置打包签名
-[x] 配置登录模块和拦截
-[x] 配置路由
-[x] 配置 http
-[x] 配置 Icon
-[x] 配置动效库
+## 已办
 
-[ ] todo 核心功能 (Aoda)
-[ ] todo 核心鉴权通用模块 (Aoda)
-[ ] i18n (Aoda)
-[ ] CI 流 ( Joney )
-[ ] webView 和通讯 ( Joney )
-[ ] IM 集成 ( Joney )
-[ ] 消息推送 ( Joney )
-[ ] 国际版和海外版 配置文件 ( Joney + Aoda )
+- 搭建基础 脚手架
+- 配置打包签名
+- 配置登录模块和拦截
+- 配置路由
+- 配置 http
+- 配置 Icon
+- 配置动效库
+
+## 代办
+
+- todo 核心功能 (Aoda)
+- todo 核心鉴权通用模块 (Aoda)
+- i18n (Aoda)
+- CI 流 ( Joney )
+- webView 和通讯 ( Joney )
+- IM 集成 ( Joney )
+- 消息推送 ( Joney )
+- 国际版和海外版 配置文件 ( Joney + Aoda )
