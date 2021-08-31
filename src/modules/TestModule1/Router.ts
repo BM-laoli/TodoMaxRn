@@ -15,6 +15,8 @@ import D2T1 from './page/Draw2Stack/Test1';
 import D2T2 from './page/Draw2Stack/Test2';
 import { Drawer2StackScreen, DrawerStackNavigator, DrawerStackScreen, HomeStackScreen, SettingsStackScreen, TabNavigator } from '.';
 import Test3 from './page/Test3';
+import WebView from './page/WebView';
+import JpushDemo from './page/Jpush'
 
 
 // 模块内 构造独立完整App 可以通过 build不同的包来搞定 一部分心性能问题
@@ -22,21 +24,31 @@ const AppStack = {
   default:"TestNodules",
   initialRouteName:"Test1",
   Screen:[
-    {
+    {  // 引导页
       name:"Test1",
       option:{headerShown: false},
       components:Test1,
     },
-    {
+    {  // 登录页
       name:"Test2",
       option:{headerShown: true},
       components:Test2,
     },
-    {
+    {  // 注册页
       name:"Test3",
       option:{headerShown: true},
       components:Test3,
     },
+    {  // webView承载页
+      name:"WebView",
+      option:{headerShown: true},
+      components:WebView,
+    }, 
+     { //  测试j极光推送
+      name:"JpushDemo",
+      option:{headerShown: true},
+      components:JpushDemo,
+    }, 
     {
       name:"DrawerStackNavigator",
       option:{headerShown: false},

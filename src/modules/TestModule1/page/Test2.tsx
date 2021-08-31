@@ -1,23 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, TextInput, ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Input, Button, Image} from 'react-native-elements';
 import {Formik} from 'formik';
 import {Col, Row, Grid} from 'react-native-easy-grid';
 import {useNavigation, CommonActions, useRoute} from '@react-navigation/native';
-import {login} from '../../../service/login/login';
+import {login, testFetch} from '../../../service/login/login';
 import {storeData} from '../../../storage';
 import {resetApp} from '../../../common/debug';
 const image4 = require('../../../assets/images/Meeting.png');
+import {useTranslation} from 'react-i18next';
 
 const Test2: React.FC<any> = props => {
   const navigation = useNavigation();
   const route = useRoute();
   const [loading, setLoading] = useState(false);
+  const {t, i18n} = useTranslation();
+
   const loginHandler = async (value: any) => {
     setLoading(true);
     console.log(value, 1);
-
     try {
       const res = (await login(value)) as any;
       setLoading(false);
@@ -119,6 +121,15 @@ const Test2: React.FC<any> = props => {
                   }}
                   title="设置成第一次使用App"
                 />
+
+                <Button
+                  title="切换语言"
+                  onPress={() => {
+                    i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr');
+                  }}></Button>
+                <View>
+                  <Text>{t('Welcome to React')}</Text>
+                </View>
               </Col>
             </Col>
           </Grid>

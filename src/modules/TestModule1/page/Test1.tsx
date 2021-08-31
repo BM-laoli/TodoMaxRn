@@ -6,20 +6,46 @@ import {
   ScrollView,
   StyleSheet,
   ImageBackground,
+  LogBox,
 } from 'react-native';
+import {DebugManager} from 'react-native-debug-tool';
 import {Button, Image} from 'react-native-elements';
 import Swiper from 'react-native-swiper';
 import {getAppData, getData, storeAppData} from '../../../storage';
+import DeviceInfo from 'react-native-device-info';
+import {Alert} from 'react-native';
+import RootSiblingsManager from 'react-native-root-siblings';
 const image1 = require('../../../assets/images/Agreements.png');
 const image2 = require('../../../assets/images/CashFlow.png');
 const image3 = require('../../../assets/images/CustomerResearch.png');
 const image4 = require('../../../assets/images/Meditation.png');
 
+// 这里想当与是一个Main 必须要 一些地方的集成的东西都在这里了
 const Test1: React.FC<any> = props => {
   const [loading, setLoading] = useState(true);
   const [state, setState] = useState(0); // 0 第一次使用app 1 没有登录  2登录了
   const navigation = useNavigation();
   const route = useRoute();
+
+  const initSync = async () => {
+    let serverUrlMap = new Map();
+    serverUrlMap.set('Online', '192.168.124.16:3000');
+    for (let i = 1; i < 4; i++) {
+      serverUrlMap.set('test00' + i, `https://domain-00${i}.net`);
+    }
+    DebugManager.initDeviceInfo(DeviceInfo).initServerUrlMap(
+      serverUrlMap,
+      'Online',
+      baseUrl => {
+        setTimeout(
+          () => Alert.alert('环境切换', '服务器环境已经切换至' + baseUrl),
+          1000,
+        );
+      },
+    );
+    DebugManager.showFloat(RootSiblingsManager);
+  };
+
   const checkFrIstAndLogin = async () => {
     const value = await getAppData();
     const userInfo = await getData();
@@ -41,6 +67,9 @@ const Test1: React.FC<any> = props => {
 
   useEffect(() => {
     try {
+      LogBox.ignoreAllLogs();
+      initSync();
+
       checkFrIstAndLogin();
       // setLoading(false);
     } catch (error) {
@@ -91,6 +120,17 @@ const Test1: React.FC<any> = props => {
                 onPress={() => {
                   storeAppData({isFirst: true});
                   navigation.replace('Test2');
+                }}></Button>
+
+              <Button
+                title="去WebView"
+                onPress={() => {
+                  navigation.push('WebView');
+                }}></Button>
+              <Button
+                title="去极光"
+                onPress={() => {
+                  navigation.push('JpushDemo');
                 }}></Button>
             </View>
           </View>

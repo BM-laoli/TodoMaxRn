@@ -16,6 +16,10 @@ import {
 } from './Router';
 import Test1ModuleStore from './Store';
 
+// 浮动弹出层
+import {RootSiblingParent} from 'react-native-root-siblings';
+//国际化
+import '../../i18n/i18n.ts';
 //AppStack
 const TestNodules = createNativeStackNavigator();
 function TestNodulesStack(props: any) {
@@ -166,11 +170,13 @@ export const DrawerStackNavigator = () => {
 
 function App() {
   return (
-    <Provider {...Test1ModuleStore}>
-      <NavigationContainer>
-        <TestNodulesStack />
-      </NavigationContainer>
-    </Provider>
+    <RootSiblingParent>
+      <Provider {...Test1ModuleStore}>
+        <NavigationContainer>
+          <TestNodulesStack />
+        </NavigationContainer>
+      </Provider>
+    </RootSiblingParent>
   );
 }
 

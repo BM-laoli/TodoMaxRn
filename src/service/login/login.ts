@@ -9,7 +9,7 @@ const checkAuth =  async  ( ) =>{
 }
 
 const login =  async <T,U> ( data:T) :Promise<U> =>{
-  return http.post("/api/auth/login  ",data)
+  return http.post("api/auth/login",data)
 }
 
 const registered =  async <T,U>( data:T ):Promise<U>=>{

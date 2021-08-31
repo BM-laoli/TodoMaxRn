@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { DebugManager } from 'react-native-debug-tool';
 import { getData } from '../storage';
 
 const codeMessage : {[key:string] :string } = {
@@ -43,8 +44,15 @@ Http.interceptors.request.use(  async function (config) {
 //返回拦截处理
 Http.interceptors.response.use(function (response) {
     // 对响应数据做点什么 外面的一层不要了 只要data
+    // 添加日志监听
+    DebugManager.appendHttpLogs(response, response);
     return response.data;
-}, function (error,) {
+}, function (error) {
+  console.log(
+    error.response
+  );
+  
+    DebugManager.appendHttpLogs(error.response,error.response);
       console.log( codeMessage[error.response.status] );
     // 对响应错误做点什么
     return Promise.reject(error);
