@@ -15,6 +15,8 @@ import {getAppData, getData, storeAppData} from '../../../storage';
 import DeviceInfo from 'react-native-device-info';
 import {Alert} from 'react-native';
 import RootSiblingsManager from 'react-native-root-siblings';
+import Toast from 'react-native-easy-toast';
+
 const image1 = require('../../../assets/images/Agreements.png');
 const image2 = require('../../../assets/images/CashFlow.png');
 const image3 = require('../../../assets/images/CustomerResearch.png');
@@ -22,6 +24,7 @@ const image4 = require('../../../assets/images/Meditation.png');
 
 // 这里想当与是一个Main 必须要 一些地方的集成的东西都在这里了
 const Test1: React.FC<any> = props => {
+  const _toastRef = React.useRef<Toast>(null) as React.RefObject<Toast>;
   const [loading, setLoading] = useState(true);
   const [state, setState] = useState(0); // 0 第一次使用app 1 没有登录  2登录了
   const navigation = useNavigation();
@@ -133,6 +136,16 @@ const Test1: React.FC<any> = props => {
                   navigation.push('JpushDemo');
                 }}></Button>
             </View>
+
+            <View>
+              <Button
+                title="提示"
+                onPress={() => {
+                  _toastRef.current?.show('show demo');
+                }}></Button>
+            </View>
+
+            <Toast ref={_toastRef} position="bottom" />
           </View>
         </Swiper>
       ) : state == 1 ? (

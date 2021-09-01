@@ -5865,6 +5865,13 @@ react-native-easy-grid@^0.2.2:
   dependencies:
     lodash "^4.17.15"
 
+react-native-easy-toast@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/react-native-easy-toast/download/react-native-easy-toast-2.0.0.tgz#059671ed23efd7fbe2855a1c3e4d21e6c4222a84"
+  integrity sha1-BZZx7SPv1/vihVocPk0h5sQiKoQ=
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-elements@^3.4.2:
   version "3.4.2"
   resolved "https://registry.nlark.com/react-native-elements/download/react-native-elements-3.4.2.tgz#66602be9c5e0e0a2a831913adec80ff6518d1ee2"
