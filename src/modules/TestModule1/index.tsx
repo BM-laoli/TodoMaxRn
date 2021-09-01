@@ -18,6 +18,7 @@ import Test1ModuleStore from './Store';
 
 // 浮动弹出层
 import {RootSiblingParent} from 'react-native-root-siblings';
+
 //国际化
 import '../../i18n/i18n.ts';
 //AppStack

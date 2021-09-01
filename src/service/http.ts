@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { DebugManager } from 'react-native-debug-tool';
+// import { DebugManager } from 'react-native-debug-tool';
+import { DebugManager } from '../../core/react-native-debug-tool';
 import { getData } from '../storage';
 
 const codeMessage : {[key:string] :string } = {

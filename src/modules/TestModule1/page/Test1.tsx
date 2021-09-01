@@ -8,7 +8,7 @@ import {
   ImageBackground,
   LogBox,
 } from 'react-native';
-import {DebugManager} from 'react-native-debug-tool';
+import {DebugManager} from '../../../../core/react-native-debug-tool';
 import {Button, Image} from 'react-native-elements';
 import Swiper from 'react-native-swiper';
 import {getAppData, getData, storeAppData} from '../../../storage';

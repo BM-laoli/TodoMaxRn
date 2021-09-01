@@ -52,6 +52,7 @@ export default class Test extends React.Component<any, any> {
   componentDidMount() {
     this.invoke
       .define('init', this.webInitialize)
+      // @ts-ignore
       .define('get', this.webWannaGet)
       .define('set', this.webWannaSet);
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {Text, View} from 'react-native';
 
 class TuisonDemoe extends React.Component<{}, {}> {
   render() {
